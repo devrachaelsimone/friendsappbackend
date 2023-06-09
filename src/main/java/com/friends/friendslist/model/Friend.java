@@ -22,11 +22,11 @@ public class Friend {
     @Column(name="email")
     private String email;
 
-    // =============COPY CONSTRUCTOR
-    public Friend() {
+    // ============= CONSTRUCTOR
+    public Friend(){
     }
 
-    // =========================  CONSTRUCTOR
+    // ========================= COPY CONSTRUCTOR
     public Friend(long id, String name, String address, String stream, String email) {
         this.id = id;
         this.name = name;
