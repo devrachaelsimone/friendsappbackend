@@ -1,9 +1,7 @@
 package com.friends.friendslist.controller;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import com.friends.friendslist.exception.ResourceNotFoundException;
 import com.friends.friendslist.model.Friend;
 import com.friends.friendslist.repository.FriendRepository;
@@ -41,6 +39,7 @@ public class FriendController {
         response.put("deleted", Boolean.TRUE);
         return ResponseEntity.ok(response);
     }
+
 
 
 }
