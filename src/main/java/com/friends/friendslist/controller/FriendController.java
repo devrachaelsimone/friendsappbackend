@@ -10,8 +10,8 @@ import org.springframework.boot.context.config.ConfigDataResourceNotFoundExcepti
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin("*") //frontend localhost can access
 
-@CrossOrigin(origins = "http://localhost:3000") //frontend localhost can access
 @RestController
 @RequestMapping("/api/v1")
 public class FriendController {
@@ -23,6 +23,11 @@ public class FriendController {
     public List<Friend> getAllFriends() {
         return friendRepository.findAll();
     }
+
+
+
+
+
 
     //POST
     @PostMapping(value = "/friends")
@@ -50,4 +55,42 @@ public class FriendController {
 //    public List<Friend> getAllFriends() {
 //        return friendRepository.findAll();
 //    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
