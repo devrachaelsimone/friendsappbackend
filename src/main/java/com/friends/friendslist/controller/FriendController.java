@@ -25,10 +25,6 @@ public class FriendController {
     }
 
 
-
-
-
-
     //POST
     @PostMapping(value = "/friends")
     public Friend createFriend(@RequestBody Friend friend) {
