@@ -1,30 +1,35 @@
 package com.friends.friendslist.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "family")
-public class FamilyMember {
+public class FamilyMember implements Sender {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
-    @Column(name="address")
+    @Column(name = "address")
     private String address;
-    @Column(name="relation")
+    @Column(name = "relation")
     private String relation;
-    @Column(name="email")
+    @Column(name = "email")
     private String email;
 
+    //create sender relationship between familyMember and mail
+    @OneToMany(mappedBy = "familyMemberSender", cascade = CascadeType.ALL)
+    private List<MailModel> sentMails = new ArrayList<>();
+
+    public List<MailModel> getSentMails() {
+        return sentMails;
+    }
 
     // ============= CONSTRUCTOR
-    public FamilyMember(){
+    public FamilyMember() {
     }
 
     // ========================= COPY CONSTRUCTOR
@@ -36,7 +41,8 @@ public class FamilyMember {
         this.email = email;
     }
 
-    public long getId() {
+    @Override //from sender interface
+    public Long getId() {
         return id;
     }
 
@@ -44,14 +50,20 @@ public class FamilyMember {
         this.id = id;
     }
 
+
+    //regular getters and setters =================================
+
+    // =========================   NAME
+    @Override
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
 
+    // =========================  ADDRESS
+    @Override
     public String getAddress() {
         return address;
     }
@@ -60,6 +72,8 @@ public class FamilyMember {
         this.address = address;
     }
 
+    // =========================  RELATION
+
     public String getRelation() {
         return relation;
     }
@@ -67,6 +81,7 @@ public class FamilyMember {
     public void setRelation(String relation) {
         this.relation = relation;
     }
+    // =========================  EMAIL
 
     public String getEmail() {
         return email;
