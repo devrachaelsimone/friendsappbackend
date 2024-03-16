@@ -1,36 +1,29 @@
 package com.friends.friendslist.model;
 
-import jakarta.persistence.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "friend")
-public class Friend implements Sender {
+@Table(name = "Friend")
+public class Friend {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(name = "name")
+    @Column(name="name")
     private String name;
-    @Column(name = "address")
+    @Column(name="address")
     private String address;
-    @Column(name = "stream")
+    @Column(name="stream")
     private String stream;
-    @Column(name = "email")
+    @Column(name="email")
     private String email;
 
-    //create sender relationship between friend and mail
-    @OneToMany(mappedBy = "friendSender", cascade = CascadeType.ALL)
-    private List<MailModel> sentMails = new ArrayList<>();
-
-    //should this be same method as what is used in mailRepository.findall?
-    public List<MailModel> getSentMails() {
-        return sentMails;
-    }
-
     // ============= CONSTRUCTOR
-    public Friend() {
+    public Friend(){
     }
 
     // ========================= COPY CONSTRUCTOR
@@ -43,20 +36,15 @@ public class Friend implements Sender {
     }
 
     // =========================  ID
-    @Override //from sender interface
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
     public void setId(long id) {
         this.id = id;
     }
+// =========================   NAME
 
-
-    //regular getters and setters =================================
-
-    // =========================   NAME
-    @Override //from sender interface
     public String getName() {
         return name;
     }
@@ -66,7 +54,6 @@ public class Friend implements Sender {
     }
 
     // =========================  ADDRESS
-    @Override //from sender interface
     public String getAddress() {
         return address;
     }

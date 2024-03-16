@@ -8,4 +8,3 @@ import com.friends.friendslist.model.Friend;
 public interface FriendRepository extends JpaRepository<Friend, Long> {
 
 }
-// 6, 7, 5, 4
